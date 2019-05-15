@@ -67,8 +67,7 @@ process.on('unhandledRejection', (reason, promise) => {
 async function a() {
 	const connection = await mysql.createConnection({
 		host: 'localhost',
-		user: 'appuser',
-		password: 'This is for Quiz 1',
+		user: 'root',
 		database: 'Sessions'});
 	
 	await connection.execute('DROP TABLE IF EXISTS Users');
@@ -124,8 +123,7 @@ app.get('/dashboard', function(req, res){
 
 			const connection = await mysql.createConnection({
 				host: 'localhost',
-				user: 'appuser',
-				password: 'This is for Quiz 1',
+				user: 'root',
 				database: 'Sessions'});
 			
 			var [row, fields] = await connection.execute('select content from Journal where users_username = ?',[userName]);
@@ -156,8 +154,7 @@ app.post('/journal', function(req, res){
 
 		const connection = await mysql.createConnection({
 			host: 'localhost',
-			user: 'appuser',
-			password: 'This is for Quiz 1',
+			user: 'root',
 			database: 'Sessions'});
 
 		await connection.execute('insert into Journal (users_username, content) values (?,?)', [userName, journalEntry]);
@@ -191,11 +188,10 @@ app.post('/login', function(req, res){
 		// To add a vulnerability
 		var connection = mysql1.createConnection({
 			host: 'localhost',
-			user: 'appuser',
-			password: 'This is for Quiz 1',
+			user: 'root',
 			database: 'Sessions'
 		});
-
+		// var query = "select * from Users where username='admin';insert into Users (username, password) values ('attacker','test')";
 		var query = "select * from Users where username='" + userName + "';";
 		connection.connect();
 		
